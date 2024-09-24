@@ -1,0 +1,79 @@
+﻿<Window x:Class="Задание_2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Задание_2"
+        mc:Ignorable="d"
+        Title="Животные" Height="450" Width="450">
+    <Grid>
+        <Menu>
+            <MenuItem Header="Файл" Click="MenuItemClick">
+                <MenuItem Header="Новый список" Click="NewListClick"/>
+                <MenuItem Header="Открыть список" Click="OpenListClick"/>
+                <MenuItem Header="Сохранить список" Click="SaveListClick"/>
+            </MenuItem>
+            <MenuItem Header="Просмотр" Click="MenuItemClick">
+                <MenuItem x:Name="PreviousMenuButton" Header="Предыдущий" Click="PreviousClick"/>
+                <MenuItem x:Name="NextMenuButton" Header="Следующий" Click="NextClick"/>
+            </MenuItem>
+            <MenuItem Header="Животные" Click="MenuItemClick">
+                <MenuItem x:Name="AddAnimalMenuButton" Header="Добавить нового" Click="AddAnimalClick"/>
+                <MenuItem x:Name="DelAnimalMenuButton" Header="Удалить текущего" Click="DelAnimalClick"/>
+            </MenuItem>
+        </Menu>
+        <StackPanel Margin="10,25,10,0" VerticalAlignment="Top">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Label Content="Вид:" Grid.Row="0" Grid.Column="0"/>
+                <TextBox x:Name="TypeAnimalTextBox"  TextWrapping="Wrap" Margin="2" Grid.Row="0" Grid.Column="1"/>
+                <Label Content="Кличка:" Grid.Row="1" Grid.Column="0"/>
+                <TextBox x:Name="NameAnimalTextBox" TextWrapping="Wrap" Margin="2" Grid.Row="1" Grid.Column="1"/>
+                <Label Content="Возраст:" Grid.Row="2" Grid.Column="0"/>
+                <TextBox x:Name="AgeAnimalTextBox" TextWrapping="Wrap" Margin="2" Grid.Row="2" Grid.Column="1"/>
+                <Label x:Name="OwnerLabel" Content="Владелец:" Grid.Row="3" Grid.Column="0"/>
+                <TextBox x:Name="OwnerAnimalTextBox" TextWrapping="Wrap" Margin="2" Grid.Row="3" Grid.Column="1"/>
+
+                <Button x:Name="AssingOwner" Content="Назначить хозяина" Click="AssignOwnerClick" Margin="2" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
+            </Grid>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="20,150,20,230">
+            <Button x:Name="SaveButton" Content="Сохранить животное" Click="SaveChangesClick"  Margin="5"/>
+            <Button x:Name="PreviousButton" Content="Предыдущий" Click="PreviousClick" Margin="5"/>
+            <Button x:Name="NextButton" Content="Следующий" Click="NextClick" Margin="5"/>
+        </StackPanel>
+        <Grid VerticalAlignment="Top" Margin="10,230,10,0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Content="Фильтр:" Grid.Row="0" Grid.Column="0"/>
+            <ComboBox Width="100" x:Name="FilterComboBox" Grid.Row="1" Grid.Column="0" Margin="2,0,2,2" SelectionChanged="FilterComboBoxChange" Height="22" VerticalAlignment="Bottom">
+                <ComboBoxItem Content="Вид"/>
+                <ComboBoxItem Content="Кличка"/>
+                <ComboBoxItem Content="Возраст"/>
+                <ComboBoxItem Content="Хозяин"/>
+            </ComboBox>
+
+            <Label Content="=" Grid.Row="1" Grid.Column="1"/>
+            <Button x:Name="RemoveFilter" Content="Снять фильтр" Click="RemoveFilterClick"  Margin="5" Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="FilterValueTextBox" TextWrapping="Wrap" Grid.Row="1" Grid.Column="2" Margin="2"/>
+        </Grid>
+    </Grid>
+</Window>
